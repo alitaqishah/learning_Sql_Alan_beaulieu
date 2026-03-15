@@ -1,0 +1,15 @@
+Lab Task 3.2
+Use dreamHome Database
+
+1. Show the average salary of all employees.
+2. Show the average salary of employees from branch B005.
+3. Show the average salary of all managers from all branches.
+4. Show the name and designation of employee who is drawing the top most salary.
+5. Show the name of a supervisor who is drawing top most salary.
+6. Show the name and branch number of an employee who is drawing least salary of all.
+7. Show the name, designation and branch number of a manager, who is drawing least salary from all managers.
+8. How many supervisors are in the system and their total salary.
+9. List of supervisors from the branch number B005 and B003.
+10. Show the total budget of salary. 
+
+

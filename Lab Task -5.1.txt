@@ -1,0 +1,15 @@
+Lab Task
+Use DreamHome database
+
+1. Retrieve data for branch "B005"
+2. Retrieve data from branch table for "London" city.
+3. Fetch data for branch number "B003" and "B005".
+4. Can you list down the city names where the branches are existed.
+5. Detail of staff members have more than 18000 salary.
+6. Can you generate the list of male staff members.
+7. Please provide a list of managers names with their branch numbers.
+8. Detail of private owners.
+9. Detail of properties available for rent.
+10. Can you display staff names in ascending order. 
+11. Detail of employees whose salary between 9000 and 18000.
+12. Detail of employees from branch B003 and b005.
