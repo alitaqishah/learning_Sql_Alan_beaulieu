@@ -1,0 +1,476 @@
+CREATE DATABASE Dental_Solutions;
+
+USE Dental_Solutions;
+
+CREATE TABLE Dentist_Informations
+(
+    Dentist_ID INT PRIMARY KEY NOT NULL,
+    First_Name VARCHAR(20),
+    Last_Name VARCHAR(20),
+    Joining_Date DATE,
+    PMDC_Number VARCHAR(20),  
+    Email VARCHAR(50),
+    Phone VARCHAR(15) NOT NULL UNIQUE, 
+    City_Name VARCHAR(20),
+    Last_Degree VARCHAR(50),
+    Specialization VARCHAR(50)
+);
+
+CREATE TABLE Patient_Details 
+(
+    Patient_ID INT PRIMARY KEY NOT NULL,
+    First_Name VARCHAR(20),
+    Last_Name VARCHAR(20),
+    Email VARCHAR(50),
+    Phone VARCHAR(15) NOT NULL UNIQUE,
+    City_Name VARCHAR(20)
+);
+
+CREATE TABLE Services_Provided
+(
+    Services_ID INT PRIMARY KEY NOT NULL,
+    Services_Name VARCHAR(100),
+    Service_Detail TEXT
+);
+
+INSERT INTO Dentist_Informations 
+(Dentist_ID, First_Name, Last_Name, Joining_Date, PMDC_Number, Email, Phone, City_Name, Last_Degree, Specialization)
+VALUES
+(1, 'Misbah', 'Fatima', '2024-02-16', '141', 'misbahfatima@gmail.com', '+923182625719', 'Lahore', 'BDS', 'Orthodontics'),
+(2, 'Ali', 'Khan', '2023-06-10', '200', 'alikhan@gmail.com', '+923345678910', 'Islamabad', 'DMD', 'Endodontics'),
+(3, 'Ayesha', 'Raza', '2022-09-05', '305', 'ayesharaza@gmail.com', '+923217654321', 'Karachi', 'BDS', 'Periodontics'),
+(4, 'Hassan', 'Ahmed', '2021-03-15', '410', 'hassanahmed@gmail.com', '+923005554321', 'Rawalpindi', 'DDS', 'Prosthodontics'),
+(5, 'Sadia', 'Malik', '2020-07-22', '515', 'sadiamalik@gmail.com', '+923456123789', 'Multan', 'DMD', 'Oral Surgery');
+
+INSERT INTO Patient_Details 
+(Patient_ID, First_Name, Last_Name, Email, Phone, City_Name) 
+VALUES 
+(1, 'Omer', 'Shah', 'omershah@gmail.com', '+923111223344', 'Lahore'),
+(2, 'Fatima', 'Ali', 'fatimaali@gmail.com', '+923222334455', 'Karachi'),
+(3, 'Bilal', 'Hassan', 'bilalhassan@gmail.com', '+923333445566', 'Islamabad'),
+(4, 'Zara', 'Iqbal', 'zaraqbal@gmail.com', '+923444556677', 'Peshawar'),
+(5, 'Tariq', 'Mehmood', 'tariqmehmood@gmail.com', '+923555667788', 'Quetta');
+
+INSERT INTO Services_Provided 
+(Services_ID, Services_Name, Service_Detail) 
+VALUES 
+(1, 'Complete Exam', 'A full dental check-up to assess overall oral health.'),
+(2, 'X-Rays', 'Dental radiographs to detect cavities, bone loss, and other issues.'),
+(3, 'Dental Cleaning', 'Professional cleaning to remove plaque and tartar.'),
+(4, 'Filling', 'Restoring a decayed or damaged tooth using composite or amalgam material.'),
+(5, 'Root Canal', 'Treatment for infected tooth pulp to save the natural tooth.');
+
+--	TASK A
+
+-- 1. List of names of Dentist ID, name and PMDC number
+
+Select Dentist_ID, First_Name, Last_Name, PMDC_Number FROM Dentist_Informations;
+
+--2. Names of Dentist with their email and phone number.
+
+Select First_Name, Last_Name, Email, Phone From Dentist_Informations;
+
+--3. List of dentist with their specialization.
+
+Select First_Name, Last_Name, Specialization From Dentist_Informations;
+
+--4. Dentist Id, name and their Last degree.
+
+Select Dentist_ID, First_Name, Last_Name, Last_Degree From Dentist_Informations;
+
+--5. Total number of dentists.
+
+Select Count(*) From Dentist_Informations;
+
+--6. Dentist name and their city name.
+
+Select First_Name,Last_Name,City_Name From Dentist_Informations;
+
+--7. City name from which the dentist are.
+
+Select City_Name From Dentist_Informations;
+
+--8. Detail of services offered by the clinic.
+
+Select Services_Name From Services_Provided
+
+ --9. Detail of patients.
+
+Select * From Patient_Details
+
+--10. Display the Email, city and name of dentists.
+
+Select Email,City_Name,First_Name,Last_Name From Dentist_Informations
+
+--11. How many patients are their in the system.
+
+Select Count(*) From Patient_Details
+
+--12. Detail of patient whose ID is 5
+
+Select * From Patient_Details Where Patient_ID = 5;
+
+--13. Detail of patient whose Id is 2 and 4
+
+Select * From Patient_Details Where Patient_ID In(2,4);
+
+--14. Detail of all patients order by their name.
+
+Select * From Patient_Details Order By First_Name;
+
+--15. Detail of patients belong from Lahore city.
+
+Select * From Patient_Details Where City_Name = 'Lahore';
+
+--16. Detail of dentists who join the clinic before 2015.
+
+Select * From Dentist_Informations Where Joining_Date < '2015-1-1';
+
+
+
+Create Database Groceries_Store;
+
+Use Groceries_Store;
+
+
+Create Table Customer_Personal_Info
+(
+Customer_ID INT Primary Key Not Null,
+First_Name VARCHAR(20),
+Last_Name VARCHAR(20),
+Email VARCHAR(40),
+Phone CHAR(13) NOT NULL UNIQUE,
+City_Name VARCHAR(25)
+);
+
+
+Create Table stockItem
+(
+Item_Code Int Primary Key Not Null,
+Item_Name Varchar(25),
+Item_Qunatity Int
+);
+
+
+
+Create Table Net_Sales
+(
+Sales_ID Int Primary Key Not Null,
+Sales_Quantity Int,
+Unit_Price TinyInt,
+Sales_Date Date,
+Item_code SmallInt,
+Customer_ID Int
+);
+
+
+
+INSERT INTO Customer_Personal_Info
+(Customer_ID,First_Name,Last_Name,Email,Phone,City_Name)
+VALUES
+(1, 'Ali', 'Khan', 'ali.khan@email.com', '03001234567', 'Mianwali'),
+(2, 'Sara', 'Ahmed', 'sara.ahmed@email.com', '03002345678', 'Lahore'),
+(3, 'Usman', 'Tariq', 'usman.tariq@email.com', '03003456789', 'Karachi'),
+(4, 'Ayesha', 'Rauf', 'ayesha.rauf@email.com', '03004567890', 'Islamabad'),
+(5, 'Bilal', 'Hassan', 'bilal.hassan@email.com', '03005678901', 'Faisalabad');
+
+
+INSERT INTO stockItem
+(Item_Code,Item_Name,Item_Qunatity)
+VALUES
+(101, 'Gala', 50),
+(102, 'Sooper', 30),
+(103, 'Sooper', 40),
+(104, 'Digestive', 20),
+(105, 'Gala', 100);
+
+
+INSERT INTO Net_Sales 
+(Sales_ID,Sales_Quantity,Unit_Price,Sales_Date,Item_code,Customer_ID)
+VALUES
+(201, 2, 50.00, '2025-02-18', 101, 1),
+(202, 1, 30.00, '2025-01-18', 102, 2),
+(203, 5, 150.00, '2024-02-12', 103, 3),
+(204, 3, 60.00, '2025-02-14', 104, 4),
+(205, 10, 200.00, '2024-02-14', 105, 5);
+
+-- TASK B
+
+--1. List of customer ID in descending order
+
+Select Customer_ID From Customer_Personal_Info Order by Customer_ID Desc
+
+--2. List of all items name with its available quantity.
+
+Select Item_Name, Item_Qunatity From stockItem;
+
+--3. Name of customers with their email ID and phone number.
+
+Select First_Name,Last_Name,Email,Phone From Customer_Personal_Info;
+
+--4. List of customers Id with their city name.
+
+Select Customer_ID,City_Name From Customer_Personal_Info;
+
+--5. List of unique city names the customers belongs to.
+
+SELECT DISTINCT City_Name FROM Customer_Personal_Info;
+
+--6. Show the total sales quantity till now.
+
+Select Sum(Sales_Quantity) From Net_Sales;
+
+--7. Detail of item code 102
+
+Select * From Net_Sales Where Item_Code = 102
+
+--8. Detail of customer 2 an 3
+
+Select * From Customer_Personal_Info Where Customer_ID In(2,3)
+
+--9. Detail of Item code 105,104,109,15
+
+Select * From Net_Sales Where Item_code In(102,104,109,15)
+
+--10. Detail of sales Id 202,205,204
+
+Select * From Net_Sales Where Sales_ID In(202,204,205)
+
+--11. Name of customer where email ID is ali.khan@email.com
+
+Select * From Customer_Personal_Info Where Email = 'ali.khan@email.com'
+
+--12. Show the whole names of each customer
+
+Select First_Name,Last_Name From Customer_Personal_Info;
+
+--13. How many customers are there in the system.
+
+Select  Count(*) From Customer_Personal_Info;
+
+--14. How many items are there in the system
+
+Select Sum(Item_Qunatity) From stockItem;
+
+--15. How many total sales order till now.
+
+Select Sum(Sales_Quantity) From Net_Sales;
+
+--16. Show the details of sales orders from 12-12-24 till now.
+
+Select * From Net_Sales Where Sales_Date > '2024-12-12';
+
+--17. Which customers IDs are involved in sales.
+
+Select Customer_ID From Net_Sales Where Sales_Date > '2024-12-12';
+
+--18. Which item codes are involved in sales till now
+
+Select Item_code From Net_Sales Where Sales_Date > '2024-12-12';
+
+--19. Total quantity of item code 105
+
+Select Item_Qunatity From stockItem Where Item_Code = 105;
+
+--20. Total quantity of item Sooper.
+
+Select Item_Qunatity From stockItem Where Item_Name = 'Sooper';
+
+
+
+-- TASK C
+
+Create Database COMSAT_T20_Super_League;
+
+Use COMSAT_T20_Super_League;
+
+Create Table Teams
+(
+Team_ID TinyInt Primary Key Not Null,
+Team_Name varchar(25) Unique,
+City varchar(25),
+Number_Of_Players TinyInt
+);
+
+Create Table Players
+(
+Player_ID Int Primary Key Not Null,
+Player_Name varchar(50),
+Shirt_Number TinyInt,
+Team_Name varchar(25),
+Player_Status varchar(7),
+Player_Role varchar(11),
+Player_Designation varchar(13)
+);
+
+Create Table Matches
+(
+Match_Number Int Primary Key Not Null,
+Team1_Name Varchar(25),
+Team2_Name Varchar(25),
+Overs_By_Team1 TinyInt,
+Overs_By_Team2 TinyInt,
+Runs_By_Team1 Int,
+Runs_By_Team2 Int,
+Winning_Team Varchar(25)
+);
+
+
+INSERT INTO Teams (Team_ID, Team_Name, City, Number_Of_Players)
+VALUES
+
+(1, 'COMSAT Lahore Campus', 'Lahore', 13),
+(2, 'COMSAT Islamabad Campus', 'Islamabad', 15),
+(3, 'COMSAT Wahh Campus', 'Wahh', 12),
+(4, 'COMSAT Sahiwal Campus', 'Sahiwal', 14),
+(5, 'COMSAT Attock Campus', 'Attock', 15),
+(6, 'COMSAT Abbotabad Campus', 'Abbotabad', 14),
+(7, 'COMSAT Vehari Campus', 'Vehari', 13);
+
+
+INSERT INTO Players (Player_ID, Player_Name, Shirt_Number, Team_Name, Player_Status, Player_Role, Player_Designation)
+VALUES
+(1, 'Ahmed Khan', 27, 'COMSAT Lahore Campus', 'Active', 'Batsman', 'Captain'),
+(2, 'Shahid Ali', 43, 'COMSAT Lahore Campus', 'Active', 'Bowler', 'Vice Captain'),
+(3, 'Muneeb Aslam', 59, 'COMSAT Lahore Campus', 'Active', 'Allrounder', 'Wicketkeeper'),
+(4, 'Saeed Butt', 36, 'COMSAT Lahore Campus', 'Reserve', 'Batsman', 'Player'),
+(5, 'Kamran Zahid', 11, 'COMSAT Lahore Campus', 'Active', 'Bowler', 'Player'),
+(6, 'Omer Hassan', 49, 'COMSAT Lahore Campus', 'Active', 'Batsman', 'Player'),
+(7, 'Ali Rehman', 64, 'COMSAT Lahore Campus', 'Active', 'Bowler', 'Player'),
+(8, 'Zubair Ahmed', 88, 'COMSAT Lahore Campus', 'Reserve', 'Allrounder', 'Player'),
+(9, 'Ahsan Shah', 32, 'COMSAT Lahore Campus', 'Active', 'Bowler', 'Player'),
+(10, 'Bilal Bashir', 50, 'COMSAT Lahore Campus', 'Active', 'Batsman', 'Player'),
+(11, 'Fahad Malik', 71, 'COMSAT Lahore Campus', 'Active', 'Allrounder', 'Player'),
+(12, 'Junaid Tariq', 60, 'COMSAT Lahore Campus', 'Active', 'Bowler', 'Player'),
+(13, 'Sikander Rauf', 23, 'COMSAT Lahore Campus', 'Reserve', 'Allrounder', 'Player'),
+
+(14, 'Faizan Khan', 12, 'COMSAT Islamabad Campus', 'Active', 'Batsman', 'Captain'),
+(15, 'Imran Ahmed', 34, 'COMSAT Islamabad Campus', 'Active', 'Bowler', 'Vice Captain'),
+(16, 'Omar Farooq', 44, 'COMSAT Islamabad Campus', 'Active', 'Allrounder', 'Wicketkeeper'),
+(17, 'Rashid Mehmood', 29, 'COMSAT Islamabad Campus', 'Reserve', 'Batsman', 'Player'),
+(18, 'Riaz Khan', 56, 'COMSAT Islamabad Campus', 'Active', 'Bowler', 'Player'),
+(19, 'Bilal Javed', 19, 'COMSAT Islamabad Campus', 'Active', 'Batsman', 'Player'),
+(20, 'Tariq Nawaz', 78, 'COMSAT Islamabad Campus', 'Reserve', 'Bowler', 'Player'),
+(21, 'Jahangir Anwar', 33, 'COMSAT Islamabad Campus', 'Active', 'Allrounder', 'Player'),
+(22, 'Sajid Ali', 23, 'COMSAT Islamabad Campus', 'Active', 'Bowler', 'Player'),
+(23, 'Zeeshan Akhtar', 62, 'COMSAT Islamabad Campus', 'Active', 'Batsman', 'Player'),
+(24, 'Usman Shah', 65, 'COMSAT Islamabad Campus', 'Active', 'Allrounder', 'Player'),
+(25, 'Nadeem Akram', 53, 'COMSAT Islamabad Campus', 'Active', 'Bowler', 'Player'),
+(26, 'Hassan Abbas', 18, 'COMSAT Islamabad Campus', 'Reserve', 'Batsman', 'Player'),
+(27, 'Wasiq Gul', 22, 'COMSAT Islamabad Campus', 'Active', 'Allrounder', 'Player'),
+(28, 'Imtiaz Ahmad', 37, 'COMSAT Islamabad Campus', 'Active', 'Bowler', 'Player'),
+
+(29, 'Faizan Khan', 9, 'COMSAT Wahh Campus', 'Active', 'Batsman', 'Captain'),
+(30, 'Imran Ahmed', 28, 'COMSAT Wahh Campus', 'Active', 'Bowler', 'Vice Captain'),
+(31, 'Omar Farooq', 52, 'COMSAT Wahh Campus', 'Active', 'Allrounder', 'Wicketkeeper'),
+(32, 'Rashid Mehmood', 14, 'COMSAT Wahh Campus', 'Reserve', 'Batsman', 'Player'),
+(33, 'Riaz Khan', 75, 'COMSAT Wahh Campus', 'Active', 'Bowler', 'Player'),
+(34, 'Bilal Javed', 80, 'COMSAT Wahh Campus', 'Active', 'Batsman', 'Player'),
+(35, 'Tariq Nawaz', 41, 'COMSAT Wahh Campus', 'Reserve', 'Bowler', 'Player'),
+(36, 'Jahangir Anwar', 58, 'COMSAT Wahh Campus', 'Active', 'Allrounder', 'Player'),
+(37, 'Sajid Ali', 27, 'COMSAT Wahh Campus', 'Active', 'Bowler', 'Player'),
+(38, 'Zeeshan Akhtar', 38, 'COMSAT Wahh Campus', 'Active', 'Batsman', 'Player'),
+(39, 'Usman Shah', 11, 'COMSAT Wahh Campus', 'Active', 'Allrounder', 'Player'),
+(40, 'Nadeem Akram', 99, 'COMSAT Wahh Campus', 'Active', 'Bowler', 'Player'),
+
+(41, 'Muneeb Shah', 19, 'COMSAT Sahiwal Campus', 'Active', 'Batsman', 'Captain'),
+(42, 'Saad Bashir', 63, 'COMSAT Sahiwal Campus', 'Active', 'Bowler', 'Vice Captain'),
+(43, 'Junaid Kamran', 72, 'COMSAT Sahiwal Campus', 'Active', 'Allrounder', 'Wicketkeeper'),
+(44, 'Tariq Aslam', 46, 'COMSAT Sahiwal Campus', 'Reserve', 'Batsman', 'Player'),
+(45, 'Zahid Ali', 55, 'COMSAT Sahiwal Campus', 'Active', 'Bowler', 'Player'),
+(46, 'Waleed Khan', 12, 'COMSAT Sahiwal Campus', 'Active', 'Batsman', 'Player'),
+(47, 'Shahzaib Nawaz', 22, 'COMSAT Sahiwal Campus', 'Active', 'Bowler', 'Player'),
+(48, 'Bilal Rasheed', 74, 'COMSAT Sahiwal Campus', 'Reserve', 'Allrounder', 'Player'),
+(49, 'Asim Raza', 67, 'COMSAT Sahiwal Campus', 'Active', 'Bowler', 'Player'),
+(50, 'Umair Ali', 42, 'COMSAT Sahiwal Campus', 'Active', 'Batsman', 'Player'),
+(51, 'Arslan Shah', 5, 'COMSAT Sahiwal Campus', 'Active', 'Allrounder', 'Player'),
+(52, 'Adnan Akram', 31, 'COMSAT Sahiwal Campus', 'Active', 'Bowler', 'Player'),
+(53, 'Fahad Malik', 66, 'COMSAT Sahiwal Campus', 'Reserve', 'Batsman', 'Player'),
+
+(54, 'Shafique Rehman', 24, 'COMSAT Attock Campus', 'Active', 'Batsman', 'Captain'),
+(55, 'Zeeshan Shaukat', 13, 'COMSAT Attock Campus', 'Active', 'Bowler', 'Vice Captain'),
+(56, 'Saeed Aziz', 2, 'COMSAT Attock Campus', 'Active', 'Allrounder', 'Wicketkeeper'),
+(57, 'Hassan Mehmood', 57, 'COMSAT Attock Campus', 'Reserve', 'Batsman', 'Player'),
+(58, 'Ahsan Khokhar', 6, 'COMSAT Attock Campus', 'Active', 'Bowler', 'Player'),
+(59, 'Kashif Kamran', 83, 'COMSAT Attock Campus', 'Active', 'Batsman', 'Player'),
+(60, 'Tariq Anwar', 61, 'COMSAT Attock Campus', 'Reserve', 'Bowler', 'Player'),
+(61, 'Shahbaz Jamil', 40, 'COMSAT Attock Campus', 'Active', 'Allrounder', 'Player'),
+(62, 'Usman Ali', 54, 'COMSAT Attock Campus', 'Active', 'Bowler', 'Player'),
+(63, 'Bilal Hussain', 71, 'COMSAT Attock Campus', 'Active', 'Batsman', 'Player'),
+(64, 'Ammar Rauf', 69, 'COMSAT Attock Campus', 'Active', 'Allrounder', 'Player'),
+(65, 'Imran Shah', 33, 'COMSAT Attock Campus', 'Active', 'Bowler', 'Player'),
+(66, 'Sajid Ahmad', 90, 'COMSAT Attock Campus', 'Reserve', 'Batsman', 'Player'),
+(67, 'Khalid Mahmood', 78, 'COMSAT Attock Campus', 'Active', 'Allrounder', 'Player'),
+
+(68, 'Ali Hassan', 25, 'COMSAT Abbotabad Campus', 'Active', 'Batsman', 'Captain'),
+(69, 'Farhan Ashraf', 38, 'COMSAT Abbotabad Campus', 'Active', 'Bowler', 'Vice Captain'),
+(70, 'Khalid Mehmood', 87, 'COMSAT Abbotabad Campus', 'Active', 'Allrounder', 'Wicketkeeper'),
+(71, 'Nashit Khan', 2, 'COMSAT Abbotabad Campus', 'Reserve', 'Batsman', 'Player'),
+(72, 'Zahid Ali', 16, 'COMSAT Abbotabad Campus', 'Active', 'Bowler', 'Player'),
+(73, 'Shabbir Raza', 8, 'COMSAT Abbotabad Campus', 'Active', 'Batsman', 'Player'),
+(74, 'Muneeb Nawaz', 14, 'COMSAT Abbotabad Campus', 'Active', 'Bowler', 'Player'),
+(75, 'Rohail Aslam', 34, 'COMSAT Abbotabad Campus', 'Reserve', 'Allrounder', 'Player'),
+(76, 'Sohail Akram', 51, 'COMSAT Abbotabad Campus', 'Active', 'Bowler', 'Player'),
+(77, 'Ahsan Akhtar', 22, 'COMSAT Abbotabad Campus', 'Active', 'Allrounder', 'Player'),
+(78, 'Shan Asif', 13, 'COMSAT Abbotabad Campus', 'Reserve', 'Bowler', 'Player'),
+(79, 'Mubashir Ali', 70, 'COMSAT Abbotabad Campus', 'Active', 'Batsman', 'Player'),
+
+(80, 'Sarfraz Hussain', 61, 'COMSAT Vehari Campus', 'Active', 'Batsman', 'Captain'),
+(81, 'Shahid Farooq', 39, 'COMSAT Vehari Campus', 'Active', 'Bowler', 'Vice Captain'),
+(82, 'Adeel Khan', 8, 'COMSAT Vehari Campus', 'Active', 'Allrounder', 'Wicketkeeper'),
+(83, 'Ali Ahmed', 58, 'COMSAT Vehari Campus', 'Reserve', 'Batsman', 'Player'),
+(84, 'Bilal Saeed', 43, 'COMSAT Vehari Campus', 'Active', 'Bowler', 'Player'),
+(85, 'Imran Rehman', 62, 'COMSAT Vehari Campus', 'Active', 'Batsman', 'Player'),
+(86, 'Zeeshan Bashir', 19, 'COMSAT Vehari Campus', 'Active', 'Bowler', 'Player'),
+(87, 'Rizwan Abbas', 50, 'COMSAT Vehari Campus', 'Reserve', 'Allrounder', 'Player'),
+(88, 'Hamza Rashid', 15, 'COMSAT Vehari Campus', 'Active', 'Bowler', 'Player'),
+(89, 'Nashit Jameel', 12, 'COMSAT Vehari Campus', 'Active', 'Batsman', 'Player');
+
+INSERT INTO Matches (Match_Number, Team1_Name, Team2_Name, Overs_By_Team1, Overs_By_Team2, Runs_By_Team1, Runs_By_Team2,Winning_Team)
+VALUES
+(1, 'COMSAT Lahore Campus', 'COMSAT Islamabad Campus', 19, 18, 158, 143,'COMSAT Lahore Campus'),
+(2, 'COMSAT Wahh Campus', 'COMSAT Sahiwal Campus', 20, 20, 175, 162,'COMSAT Wahh Campus'),
+(3, 'COMSAT Attock Campus', 'COMSAT Abbotabad Campus', 18, 20, 146, 134,'COMSAT Attock Campus'),
+(4, 'COMSAT Vehari Campus', 'COMSAT Lahore Campus', 20, 18, 180, 168,'COMSAT Vehari Campus'),
+(5, 'COMSAT Islamabad Campus', 'COMSAT Wahh Campus', 20, 19, 195, 150,'COMSAT Islamabad Campus'),
+(6, 'COMSAT Sahiwal Campus', 'COMSAT Attock Campus', 17, 18, 167, 153,'COMSAT Sahiwal Campus');
+
+--1. Detail of teams
+
+Select * From Teams;
+
+--2. Total number of teams participated in the league.
+
+Select Count(*) From Teams;
+
+--3. Total number of matches played in the league so far.
+
+Select Count(*) From Matches;
+
+--4. Which two teams played match number 1.
+
+Select Team1_Name,Team2_Name From Matches Where Match_Number = 1;
+
+--5. What was the total score of team1 in first match.
+
+Select Runs_By_Team1 From Matches Where Match_Number = 1;
+
+--6. What was the total score of the match in first match.
+
+Select Sum(Runs_By_Team1+Runs_By_Team2) From Matches Where Match_Number = 1;
+
+--7. Which team won the first match.
+
+Select Winning_Team From Matches Where Match_Number = 1;
+
+--8. Name of each player of each team with his shirt number.
+
+Select Player_Name,Team_Name,Shirt_Number From Players
+
+--9. Name of the team captain of each team.
+
+Select Player_Name,Team_Name,Player_Role,Shirt_Number From Players Where  Player_Designation = 'Captain';
+
+--10.Name of wicket keeper of each team.
+
+Select Player_Name,Team_Name,Player_Role,Shirt_Number From Players Where  Player_Designation = 'Wicketkeeper';
