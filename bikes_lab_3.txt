@@ -1,0 +1,25 @@
+You are hired as a database designer for the Pakistan Electric Vehicle Association (PEVA), which is collecting data on motorcycle manufacturing companies operating in Pakistan.
+
+The goal is to design a database to record important details about these companies — especially focusing on electric bike manufacturers and popular engine categories.
+
+Create a new database named Companies.
+
+Switch to the newly created database.
+
+Create a table named Company_details with the following structure and constraints:
+
+Company_ID: Integer, Primary Key, Not Null
+
+Company_Name: Variable character field of length 20
+
+Company_Based: Variable character field of length 20
+
+Electric_Bike: Bit, Not Null (1 if the company manufactures electric bikes, 0 otherwise)
+
+Most_Powerful_Bike: Integer (stores engine capacity in cc)
+
+Bikes_150cc: Bit, Not Null (1 if the company produces 150cc bikes, 0 otherwise)
+
+
+
+
