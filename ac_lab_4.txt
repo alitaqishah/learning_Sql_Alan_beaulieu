@@ -1,0 +1,44 @@
+
+You are working as a Database Developer for a home appliance research company in Pakistan. The company aims to collect and manage information about air conditioner (AC) manufacturing and selling companies operating in the country.
+
+The database should record whether a company sells inverter ACs, the cooling capacity (in BTUs) of its most powerful model, and whether it offers standard 18,000 BTU models, which are among the most popular choices in Pakistan’s residential market.
+
+Create a new database named AirConditioners.
+
+Use the newly created database.
+
+Create a table named Company_Details with the following fields and constraints:
+
+Company_ID — Integer, Primary Key, Not Null
+
+Company_Name — Variable character type (length 50) — stores the name of the company (e.g., Dawlance, Haier, Gree, Orient)
+
+Company_Based — Variable character type (length 50) — city or country where the company is based
+
+Sells_Inverter_ACs — Bit, Not Null, value 1 if the company sells inverter ACs, 0 otherwise
+
+Most_Powerful_AC — Integer, stores the BTU rating of the most powerful AC model offered
+
+Sells_18000BTU_AC — Bit, Not Null, value 1 if the company sells 18,000 BTU ACs, 0 otherwise
+
+
+
+
+
+
+
+1. How many companies air conditioners are available in Pakistan.
+2. Detail of air conditioners manufactured in Pakistan
+3. Detail of air conditioners assembled in Pakistan
+4. Detail of air conditioners according to BTU.
+5. Price comparison of 12000BTU of each company
+6. Detail of companies which sell 18000BTU air conditioners.
+7. Price comparison of 18000BTU conditioners.
+8. Detail of companies which provide more than 18000BTU air conditioners.
+9. Detail of companies which sell air conditioners.
+10. Comparison of price of air conditioners with 18000BTU capacity.
+11. Detail of air conditioners which have price more than Rupees 150,000.
+12. Detail of air conditioners assembler based in Lahore.
+13. Detail of air conditioners assembler based in Karachi.
+14. Detail of air conditioners with T3 compressor type.
+15. Detail of non-inverter air conditioners.
